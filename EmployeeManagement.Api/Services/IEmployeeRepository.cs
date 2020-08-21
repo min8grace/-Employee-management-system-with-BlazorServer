@@ -14,6 +14,7 @@ namespace EmployeeManagement.Api.Services
         Task<Employee> UpdateEmployee(Employee employee);
         Task<Employee> GetEmployeeByEmail(string email);
         Task<Employee> DeleteEmployee(int employeeId);
+        Task<IEnumerable<Employee>> Search(string name, Gender? gender);
 
     }
 }
