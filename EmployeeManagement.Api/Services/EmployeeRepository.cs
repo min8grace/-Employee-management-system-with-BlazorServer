@@ -48,7 +48,7 @@ namespace EmployeeManagement.Api.Services
             }
             return null;
         }
-        public async void DeleteEmployee(int employeeId)
+        public async Task<Employee> DeleteEmployee(int employeeId)
         {
             var result = await appDbContext.Employees
             .FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
@@ -57,6 +57,15 @@ namespace EmployeeManagement.Api.Services
                 appDbContext.Employees.Remove(result);
                 await appDbContext.SaveChangesAsync();
             }
+            return null;
+
         }
+
+        public async Task<Employee> GetEmployeeByEmail(string email)
+        {
+            return await appDbContext.Employees
+            .FirstOrDefaultAsync(e => e.Email == email);
+        }
+
     }
 }
